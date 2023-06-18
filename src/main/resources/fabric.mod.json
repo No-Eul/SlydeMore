@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "slydemore",
+	"version": "${version}",
+	"name": "${name}",
+	"description": "Allows dragging sliders further beyond the screen when used with Slyde mod",
+	"authors": [
+		{
+			"name": "NoEul",
+			"contact": {
+				"email": "me@NoEul.dev",
+				"homepage": "https://NoEul.dev",
+				"sources": "https://github.com/No-Eul"
+			}
+		}
+	],
+	"contact": {
+		"email": "me@NoEul.dev",
+		"homepage": "https://modrinth.com/mod/slyde-more",
+		"issues": "https://github.com/No-Eul/SlydeMore/issues",
+		"sources": "https://github.com/No-Eul/SlydeMore"
+	},
+	"contributors": [],
+	"license": "MIT",
+	"icon": "assets/slydemore/icon.png",
+	"environment": "client",
+	"mixins": [
+		"slydemore.mixins.json",
+		"slydemore.sodium.mixins.json",
+		"slydemore.legacy-sodium.mixins.json"
+	],
+	"depends": {
+		"minecraft": ">=1.16-alpha.20.10.a",
+		"fabricloader": ">=${loader_version}"
+	},
+	"recommends": {
+		"slyde": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"update_checker": true
+		}
+	}
+}
