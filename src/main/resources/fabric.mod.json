@@ -3,7 +3,7 @@
 	"id": "slydemore",
 	"version": "${version}",
 	"name": "${name}",
-	"description": "Allows dragging sliders further beyond the screen when used with Slyde mod",
+	"description": "Allows dragging sliders further without screen width limit when used with Slyde mod",
 	"authors": [
 		{
 			"name": "NoEul",

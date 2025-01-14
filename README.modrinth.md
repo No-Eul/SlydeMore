@@ -12,14 +12,15 @@
 <br>
 [<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="160">](https://www.buymeacoffee.com/NoEul)
 
-Slyde More is a Fabric mod that allows dragging sliders further beyond the screen when used with [Slyde](https://modrinth.com/mod/slyde) mod.
+Slyde More is a Fabric mod that allows dragging sliders further without screen width limit when used with [Slyde](https://modrinth.com/mod/slyde) mod.
 </center>
 
-## Requirements
+## Dependencies
+### Requirements
 * [Minecraft](https://www.minecraft.net) (Game)
-* [Fabric Loader](https://fabricmc.net) (Loader)
+* [Fabric Loader](https://fabricmc.net) (Mod Loader)
 
-## Suggestions
+### Suggestions
 * [Slyde](https://modrinth.com/mod/slyde) (Mod)
 
 ## Notes
