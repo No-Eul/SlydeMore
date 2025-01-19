@@ -1,3 +1,5 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
 import kotlin.io.path.Path
 import kotlin.io.path.exists
 
@@ -36,8 +38,8 @@ allprojects {
 	}
 }
 
+@Suppress("UnstableApiUsage")
 subprojects {
-	@Suppress("UnstableApiUsage")
 	loom.mixin.defaultRefmapName.set(
 		if (project.name == "core") "${property("mod_id")}.refmap.json"
 		else "${property("mod_id")}.${project.name}.refmap.json"
@@ -46,6 +48,17 @@ subprojects {
 	tasks {
 		jar {
 			archiveAppendix.set(project.name)
+
+			from("build/resources") {
+				include("**/*.mixins.json")
+
+				@Suppress("UNCHECKED_CAST")
+				eachFile {
+					val mixinConfigs = JsonSlurper().parse(file) as MutableMap<String, Any>
+					mixinConfigs["refmap"] = loom.mixin.defaultRefmapName.get()
+					file.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(mixinConfigs)))
+				}
+			}
 		}
 
 		remapJar {
