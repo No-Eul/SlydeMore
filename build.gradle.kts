@@ -47,11 +47,15 @@ subprojects {
 
 	tasks {
 		processResources {
-			filesMatching("${sourceSets["main"].output.resourcesDir}/*.mixins.json") {
-				@Suppress("UNCHECKED_CAST")
-				val mixinConfigs = JsonSlurper().parse(file) as MutableMap<String, Any>
-				mixinConfigs["refmap"] = loom.mixin.defaultRefmapName.get()
-				file.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(mixinConfigs)))
+			doLast {
+				fileTree(outputs.files.asPath) {
+					include("*.mixins.json")
+				}.forEach {
+					@Suppress("UNCHECKED_CAST")
+					val mixinConfigs = JsonSlurper().parse(it) as MutableMap<String, Any>
+					mixinConfigs["refmap"] = loom.mixin.defaultRefmapName.get()
+					it.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(mixinConfigs)))
+				}
 			}
 		}
 
