@@ -46,19 +46,17 @@ subprojects {
 	)
 
 	tasks {
+		processResources {
+			filesMatching("${sourceSets["main"].output.resourcesDir}/*.mixins.json") {
+				@Suppress("UNCHECKED_CAST")
+				val mixinConfigs = JsonSlurper().parse(file) as MutableMap<String, Any>
+				mixinConfigs["refmap"] = loom.mixin.defaultRefmapName.get()
+				file.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(mixinConfigs)))
+			}
+		}
+
 		jar {
 			archiveAppendix.set(project.name)
-
-			from("build/resources") {
-				include("**/*.mixins.json")
-
-				@Suppress("UNCHECKED_CAST")
-				eachFile {
-					val mixinConfigs = JsonSlurper().parse(file) as MutableMap<String, Any>
-					mixinConfigs["refmap"] = loom.mixin.defaultRefmapName.get()
-					file.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(mixinConfigs)))
-				}
-			}
 		}
 
 		remapJar {
@@ -135,7 +133,8 @@ tasks {
 	}
 
 	jar {
-		from(subprojects.map { it.sourceSets.getByName("main").output })
+		dependsOn(subprojects.map { it.tasks.remapJar })
+		from(subprojects.flatMap { it.tasks["remapJar"].outputs.files }.map(::zipTree))
 		from("LICENSE.txt")
 		exclude(
 			"assets/**/*.inkscape.svg",
