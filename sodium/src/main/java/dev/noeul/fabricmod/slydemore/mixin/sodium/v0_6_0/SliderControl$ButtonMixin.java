@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Environment(EnvType.CLIENT)
-@Mixin(targets = { "net.caffeinemc.mods.sodium.client.gui.options.control.SliderControl$Button" }, remap = false)
+@Mixin(targets = "net.caffeinemc.mods.sodium.client.gui.options.control.SliderControl$Button")
 public class SliderControl$ButtonMixin extends ControlElement<Integer> {
 	public SliderControl$ButtonMixin(Option<Integer> option, Dim2i dim) {
 		super(option, dim);
@@ -22,7 +22,7 @@ public class SliderControl$ButtonMixin extends ControlElement<Integer> {
 			value = "INVOKE",
 			target = "Lnet/caffeinemc/mods/sodium/client/gui/options/control/SliderControl$Button;setValueFromMouse(D)V"
 	))
-	private void inject$onClick(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callbackInfo) {
+	private void inject$mouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callbackInfo) {
 		MouseUtil.lockPointer();
 	}
 
