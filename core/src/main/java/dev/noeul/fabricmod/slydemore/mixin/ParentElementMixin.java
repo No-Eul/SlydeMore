@@ -1,5 +1,6 @@
 package dev.noeul.fabricmod.slydemore.mixin;
 
+import dev.noeul.fabricmod.slydemore.GameVersion;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.SharedConstants;
@@ -19,8 +20,12 @@ import java.util.Optional;
 public interface ParentElementMixin {
 	@Inject(method = "mouseReleased", at = @At(value = "HEAD"), cancellable = true)
 	default void inject$mouseReleased(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> callbackInfo) {
-		// <=1.20.6 Compatibility Check
-		int protocolVersion = SharedConstants.getGameVersion().getProtocolVersion();
+		GameVersion gameVersion = (GameVersion) SharedConstants.getGameVersion();
+		// 1.21.5 Compatibility Check
+		int protocolVersion = gameVersion.protocolVersion() == -1
+				? gameVersion.getProtocolVersion() // Before 1.21.5
+				: gameVersion.protocolVersion(); // After 25w15a
+		// 1.20.6 Compatibility Check
 		if ((protocolVersion & 0x40000000) == 0 // isRelease
 				&& protocolVersion > 766 // mcVersion > 1.20.6
 				|| protocolVersion >= (0x40000000 | 193) // mcVersion >= 24w18a
