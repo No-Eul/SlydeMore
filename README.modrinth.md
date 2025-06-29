@@ -6,7 +6,6 @@
 [![MIT License](https://img.shields.io/github/license/No-Eul/SlydeMore)](https://github.com/No-Eul/SlydeMore/blob/main/LICENSE.txt)
 [![Latest Release](https://img.shields.io/github/v/release/No-Eul/SlydeMore)](https://github.com/No-Eul/SlydeMore/releases/latest)
 <br>
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmodrinth.com%2Fmod%2Fslyde-more)](#)
 [![Modrinth](https://img.shields.io/modrinth/dt/slyde-more?logo=modrinth)](https://modrinth.com/mod/slyde-more)
 [![GitHub](https://img.shields.io/github/downloads/No-Eul/SlydeMore/total?logo=github)](https://github.com/No-Eul/SlydeMore/releases)
 <br>
