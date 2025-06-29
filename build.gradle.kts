@@ -4,8 +4,9 @@ import kotlin.io.path.Path
 import kotlin.io.path.exists
 
 plugins {
+	// Fabric Loom - https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml
 	id("java")
-	id("fabric-loom") version "1.9.2"
+	id("fabric-loom") version "1.11.1"
 	id("com.dorongold.task-tree") version "4.0.0"
 }
 
@@ -78,13 +79,19 @@ repositories {
 }
 
 dependencies {
-	modRuntimeOnly("io.gitlab.jfronny:slyde:1.7.5") // https://modrinth.com/mod/slyde/versions
-//	modRuntimeOnly("maven.modrinth:sodium:mc1.21-0.5.11") // https://modrinth.com/mod/sodium/versions
-	modRuntimeOnly("maven.modrinth:sodium:mc1.21-0.6.0-beta.1-fabric") // https://modrinth.com/mod/sodium/versions
+	// Slyde - https://modrinth.com/mod/slyde/versions
+	// Sodium - https://modrinth.com/mod/sodium/versions
+	modRuntimeOnly("io.gitlab.jfronny:slyde:1.7.9")
+//	modRuntimeOnly("maven.modrinth:sodium:mc1.21-0.5.11")
+//	modRuntimeOnly("maven.modrinth:sodium:mc1.21-0.6.0-beta.1-fabric")
+	modRuntimeOnly("maven.modrinth:sodium:mc1.21.6-0.6.13-fabric")
 
-	modRuntimeOnly("net.fabricmc.fabric-api:fabric-api:0.104.0+1.21.1") // https://fabricmc.net/develop/
-	modRuntimeOnly("maven.modrinth:mixintrace:1.1.1+1.17") // https://modrinth.com/mod/mixintrace/versions
-	modRuntimeOnly("com.terraformersmc:modmenu:11.+") // https://modrinth.com/mod/modmenu/versions
+	// Fabric API - // https://fabricmc.net/develop/
+	// MixinTrace - // https://modrinth.com/mod/mixintrace/versions
+	// Mod Menu - https://modrinth.com/mod/modmenu/versions
+	modRuntimeOnly("net.fabricmc.fabric-api:fabric-api:0.128.1+1.21.6")
+	modRuntimeOnly("maven.modrinth:mixintrace:1.1.1+1.17")
+	modRuntimeOnly("com.terraformersmc:modmenu:15.+")
 
 	implementation(project(":core", "namedElements"))
 	implementation(project(":sodium", "namedElements"))
