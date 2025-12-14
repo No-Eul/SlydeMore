@@ -2,7 +2,7 @@
 	"required": true,
 	"package": "dev.noeul.fabricmod.slydemore.mixin",
 	"compatibilityLevel": "JAVA_8",
-	"client": ["MinecraftClientAccessor", "SliderWidgetMixin"],
+	"client": ["MinecraftClientAccessor", "MinecraftClientMixin", "SliderWidgetMixin"],
 	"injectors": {
 		"defaultRequire": 1
 	}
