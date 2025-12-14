@@ -29,14 +29,14 @@
 		"slydemore.sodium.mixins.json"
 	],
 	"depends": {
-		"minecraft": ">=1.21.9-alpha.25.31.a",
+		"minecraft": ">=1.21.9-alpha.25.36.a",
 		"fabricloader": ">=${loader_version}"
 	},
 	"recommends": {
 		"slyde": "*"
 	},
 	"conflicts": {
-		"sodium": "<=0.5.11"
+		"sodium": "<mc1.21.9-0.7.0-fabric"
 	},
 	"custom": {
 		"modmenu": {

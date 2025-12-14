@@ -1,6 +1,7 @@
 package dev.noeul.fabricmod.slydemore;
 
 import dev.noeul.fabricmod.slydemore.mixin.MinecraftClientAccessor;
+import net.minecraft.class_11906;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import org.lwjgl.glfw.GLFW;
@@ -13,7 +14,7 @@ public class MouseUtil {
 		if (!CLIENT.isWindowFocused() || MouseUtil.pointerLocked)
 			return;
 
-		if (!MinecraftClient.IS_SYSTEM_MAC)
+		if (!class_11906.field_62591) // SystemKeycodes.UPDATE_PRESSED_STATE_ON_MOUSE_GRAB
 			KeyBinding.updatePressedStates();
 
 		MouseUtil.pointerLocked = true;
