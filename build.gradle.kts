@@ -31,7 +31,7 @@ dependencies {
 	// Fabric API - // https://fabricmc.net/develop/
 	// MixinTrace - // https://modrinth.com/mod/mixintrace/versions
 	// Mod Menu - https://modrinth.com/mod/modmenu/versions
-	modRuntimeOnly("net.fabricmc.fabric-api:fabric-api:0.128.1+1.21.6")
+	modRuntimeOnly("net.fabricmc.fabric-api:fabric-api:0.134.0+1.21.9")
 	modRuntimeOnly("maven.modrinth:mixintrace:1.1.1+1.17")
 	modRuntimeOnly("com.terraformersmc:modmenu:16.+")
 }
