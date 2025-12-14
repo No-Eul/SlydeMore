@@ -29,7 +29,7 @@
 		"slydemore.sodium.mixins.json"
 	],
 	"depends": {
-		"minecraft": ">=1.16-alpha.20.10.a",
+		"minecraft": ">=1.21.9-alpha.25.31.a",
 		"fabricloader": ">=${loader_version}"
 	},
 	"recommends": {
