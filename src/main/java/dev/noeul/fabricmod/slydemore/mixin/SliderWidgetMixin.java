@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(SliderWidget.class)
 public class SliderWidgetMixin {
 	@Inject(method = "onClick", at = @At("HEAD"))
-	private void inject$onClick(double mouseX, double mouseY, CallbackInfo callbackInfo) {
+	private void inject$onClick(double mouseX, double mouseY, boolean bool, CallbackInfo callbackInfo) {
 		MouseUtil.lockPointer();
 	}
 
