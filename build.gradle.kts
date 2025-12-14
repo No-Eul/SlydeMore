@@ -21,12 +21,12 @@ dependencies {
 	mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
 	modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
 
-	modCompileOnly("maven.modrinth:sodium:mc1.21-0.6.0-beta.1-fabric")
+	modCompileOnly("maven.modrinth:sodium:mc1.21.9-0.7.0-fabric")
 
 	// Slyde - https://modrinth.com/mod/slyde/versions
 	// Sodium - https://modrinth.com/mod/sodium/versions
 	modRuntimeOnly("io.gitlab.jfronny:slyde:1.7.9")
-	modRuntimeOnly("maven.modrinth:sodium:mc1.21.6-0.6.13-fabric")
+	modRuntimeOnly("maven.modrinth:sodium:mc1.21.9-0.7.0-fabric")
 
 	// Fabric API - // https://fabricmc.net/develop/
 	// MixinTrace - // https://modrinth.com/mod/mixintrace/versions
