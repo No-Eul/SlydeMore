@@ -1,9 +1,0 @@
-{
-	"required": true,
-	"package": "dev.noeul.fabricmod.slydemore.mixin.sodium.v0_5_11",
-	"compatibilityLevel": "JAVA_8",
-	"client": ["SliderControl$ButtonMixin"],
-	"injectors": {
-		"defaultRequire": 1
-	}
-}

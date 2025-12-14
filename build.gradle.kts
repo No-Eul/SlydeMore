@@ -95,7 +95,6 @@ dependencies {
 
 	implementation(project(":core", "namedElements"))
 	implementation(project(":sodium", "namedElements"))
-	implementation(project(":legacy-sodium", "namedElements"))
 }
 
 loom {

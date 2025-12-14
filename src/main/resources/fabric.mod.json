@@ -26,8 +26,7 @@
 	"environment": "client",
 	"mixins": [
 		"slydemore.mixins.json",
-		"slydemore.sodium.mixins.json",
-		"slydemore.legacy-sodium.mixins.json"
+		"slydemore.sodium.mixins.json"
 	],
 	"depends": {
 		"minecraft": ">=1.16-alpha.20.10.a",
@@ -35,6 +34,9 @@
 	},
 	"recommends": {
 		"slyde": "*"
+	},
+	"conflicts": {
+		"sodium": "<=0.5.11"
 	},
 	"custom": {
 		"modmenu": {

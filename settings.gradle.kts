@@ -9,4 +9,3 @@ pluginManagement {
 
 include("core")
 include("sodium")
-include("legacy-sodium")
