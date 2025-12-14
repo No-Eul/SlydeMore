@@ -6,7 +6,7 @@ import net.caffeinemc.mods.sodium.client.gui.options.control.ControlElement;
 import net.caffeinemc.mods.sodium.client.util.Dim2i;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.class_11909;
+import net.minecraft.client.gui.Click;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,12 +23,12 @@ public class SliderControl$ButtonMixin extends ControlElement<Integer> {
 			value = "INVOKE",
 			target = "Lnet/caffeinemc/mods/sodium/client/gui/options/control/SliderControl$Button;setValueFromMouse(D)V"
 	))
-	private void inject$mouseClicked(class_11909 event, boolean repeated, CallbackInfoReturnable<Boolean> callbackInfo) {
+	private void inject$mouseClicked(Click event, boolean repeated, CallbackInfoReturnable<Boolean> callbackInfo) {
 		MouseUtil.lockPointer();
 	}
 
 	@Override
-	public boolean mouseReleased(class_11909 arg) {
+	public boolean mouseReleased(Click arg) {
 		MouseUtil.unlockPointer();
 		return true;
 	}
