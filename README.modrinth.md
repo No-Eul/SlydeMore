@@ -22,6 +22,9 @@ Slyde More is a Fabric mod that allows dragging sliders further without screen w
 ### Suggestions
 * [Slyde](https://modrinth.com/mod/slyde) (Mod)
 
+### Conflicts
+* [Sodium](https://modrinth.com/mod/sodium) `<0.7.0+mc1.21.9`
+
 ## Notes
 * The mod file name indicates the mod name, loader and version:
   * `(mod name)-(mod version)+mc(built minecraft version)+(mod loader).jar`
