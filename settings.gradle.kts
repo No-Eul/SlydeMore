@@ -6,6 +6,3 @@ pluginManagement {
 		maven("https://maven.fabricmc.net/") { name = "Fabric" }
 	}
 }
-
-include("core")
-include("sodium")

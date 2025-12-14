@@ -1,4 +1,4 @@
-package dev.noeul.fabricmod.slydemore.mixin.sodium.v0_6_0;
+package dev.noeul.fabricmod.slydemore.mixin.sodium;
 
 import dev.noeul.fabricmod.slydemore.MouseUtil;
 import net.caffeinemc.mods.sodium.client.gui.options.Option;

@@ -1,5 +1,3 @@
-import groovy.json.JsonOutput
-import groovy.json.JsonSlurper
 import kotlin.io.path.Path
 import kotlin.io.path.exists
 
@@ -8,66 +6,6 @@ plugins {
 	id("java")
 	id("fabric-loom") version "1.11.1"
 	id("com.dorongold.task-tree") version "4.0.0"
-}
-
-allprojects {
-	apply(plugin = "java")
-	apply(plugin = "fabric-loom")
-
-	dependencies {
-		minecraft("com.mojang:minecraft:${property("minecraft_version")}")
-		mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
-		modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
-	}
-
-	tasks {
-		compileJava {
-			if (targetJavaVersion >= JavaVersion.VERSION_1_10 || JavaVersion.current().isJava10Compatible)
-				options.release.set(targetJavaVersion.majorVersion.toInt())
-			options.encoding = "UTF-8"
-		}
-
-		jar {
-			archiveBaseName.set("${project.property("archivesBaseName")}")
-			archiveVersion.set("${project.version}+mc${project.property("minecraft_version")}+fabric")
-		}
-
-		remapJar {
-			archiveBaseName.set("${project.property("archivesBaseName")}")
-			archiveVersion.set("${project.version}+mc${project.property("minecraft_version")}+fabric")
-		}
-	}
-}
-
-@Suppress("UnstableApiUsage")
-subprojects {
-	loom.mixin.defaultRefmapName.set(
-		if (project.name == "core") "${property("mod_id")}.refmap.json"
-		else "${property("mod_id")}.${project.name}.refmap.json"
-	)
-
-	tasks {
-		processResources {
-			doLast {
-				fileTree(outputs.files.asPath) {
-					include("*.mixins.json")
-				}.forEach {
-					@Suppress("UNCHECKED_CAST")
-					val mixinConfigs = JsonSlurper().parse(it) as MutableMap<String, Any>
-					mixinConfigs["refmap"] = loom.mixin.defaultRefmapName.get()
-					it.writeText(JsonOutput.prettyPrint(JsonOutput.toJson(mixinConfigs)))
-				}
-			}
-		}
-
-		jar {
-			archiveAppendix.set(project.name)
-		}
-
-		remapJar {
-			archiveAppendix.set(project.name)
-		}
-	}
 }
 
 repositories {
@@ -79,11 +17,15 @@ repositories {
 }
 
 dependencies {
+	minecraft("com.mojang:minecraft:${property("minecraft_version")}")
+	mappings("net.fabricmc:yarn:${property("yarn_mappings")}:v2")
+	modImplementation("net.fabricmc:fabric-loader:${property("loader_version")}")
+
+	modCompileOnly("maven.modrinth:sodium:mc1.21-0.6.0-beta.1-fabric")
+
 	// Slyde - https://modrinth.com/mod/slyde/versions
 	// Sodium - https://modrinth.com/mod/sodium/versions
 	modRuntimeOnly("io.gitlab.jfronny:slyde:1.7.9")
-//	modRuntimeOnly("maven.modrinth:sodium:mc1.21-0.5.11")
-//	modRuntimeOnly("maven.modrinth:sodium:mc1.21-0.6.0-beta.1-fabric")
 	modRuntimeOnly("maven.modrinth:sodium:mc1.21.6-0.6.13-fabric")
 
 	// Fabric API - // https://fabricmc.net/develop/
@@ -92,9 +34,6 @@ dependencies {
 	modRuntimeOnly("net.fabricmc.fabric-api:fabric-api:0.128.1+1.21.6")
 	modRuntimeOnly("maven.modrinth:mixintrace:1.1.1+1.17")
 	modRuntimeOnly("com.terraformersmc:modmenu:15.+")
-
-	implementation(project(":core", "namedElements"))
-	implementation(project(":sodium", "namedElements"))
 }
 
 loom {
@@ -142,14 +81,26 @@ tasks {
 		}
 	}
 
+	compileJava {
+		if (targetJavaVersion >= JavaVersion.VERSION_1_10 || JavaVersion.current().isJava10Compatible)
+			options.release.set(targetJavaVersion.majorVersion.toInt())
+		options.encoding = "UTF-8"
+	}
+
 	jar {
-		dependsOn(subprojects.map { it.tasks.remapJar })
-		from(subprojects.flatMap { it.tasks["remapJar"].outputs.files }.map(::zipTree))
+		archiveBaseName.set("${project.property("archivesBaseName")}")
+		archiveVersion.set("${project.version}+mc${project.property("minecraft_version")}+fabric")
+
 		from("LICENSE.txt")
 		exclude(
 			"assets/**/*.inkscape.svg",
 			"assets/**/*.xcf"
 		)
+	}
+
+	remapJar {
+		archiveBaseName.set("${project.property("archivesBaseName")}")
+		archiveVersion.set("${project.version}+mc${project.property("minecraft_version")}+fabric")
 	}
 }
 
