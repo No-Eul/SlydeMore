@@ -4,7 +4,7 @@ import kotlin.io.path.exists
 plugins {
 	// Fabric Loom - https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin/maven-metadata.xml
 	id("java")
-	id("fabric-loom") version "1.11.1"
+	id("fabric-loom") version "1.13.6"
 	id("com.dorongold.task-tree") version "4.0.0"
 }
 
@@ -25,15 +25,15 @@ dependencies {
 
 	// Slyde - https://modrinth.com/mod/slyde/versions
 	// Sodium - https://modrinth.com/mod/sodium/versions
-	modRuntimeOnly("io.gitlab.jfronny:slyde:1.7.9")
-	modRuntimeOnly("maven.modrinth:sodium:mc1.21.9-0.7.0-fabric")
+	modRuntimeOnly("io.gitlab.jfronny:slyde:1.7.12")
+	modRuntimeOnly("maven.modrinth:sodium:mc1.21.10-0.7.3-fabric")
 
 	// Fabric API - // https://fabricmc.net/develop/
 	// MixinTrace - // https://modrinth.com/mod/mixintrace/versions
 	// Mod Menu - https://modrinth.com/mod/modmenu/versions
 	modRuntimeOnly("net.fabricmc.fabric-api:fabric-api:0.128.1+1.21.6")
 	modRuntimeOnly("maven.modrinth:mixintrace:1.1.1+1.17")
-	modRuntimeOnly("com.terraformersmc:modmenu:15.+")
+	modRuntimeOnly("com.terraformersmc:modmenu:16.+")
 }
 
 loom {
